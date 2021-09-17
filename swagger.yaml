@@ -9,7 +9,7 @@ info:
   license:
     name: "Apache 2.0"
     url: "http://www.apache.org/licenses/LICENSE-2.0.html"
-host: "127.0.0.1:9999"
+host: "yashp280793.github.io"
 tags:
 - name: "generateR4Patient"
   description: ""
