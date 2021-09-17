@@ -1,0 +1,277 @@
+swagger: "2.0"
+info:
+  description: "This is the sample prototype which converts custom json to FHIR json resources. The scope of this prototype is to generate only Patient and ImagingStudy FHIR Resources."
+  version: "1.0.0"
+  title: "FHIR Translator"
+  termsOfService: "http://swagger.io/terms/"
+  contact:
+    email: "apiteam@swagger.io"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "127.0.0.1:9999"
+tags:
+- name: "generateR4Patient"
+  description: ""
+  externalDocs:
+    description: "Find more"
+    url: "https://www.hl7.org/fhir/patient.html"
+- name: "generateR4ImagingStudy"
+  description: ""
+  externalDocs:
+    description: "Find more"
+    url: "https://www.hl7.org/fhir/imagingstudy.html"
+schemes:
+- "http"
+- "https"
+paths:
+  /generateR4Patient/:
+    post:
+      tags:
+      - "generateR4Patient"
+      summary: "Convert custom json to standard patient resource"
+      description: ""
+      operationId: "convert"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Put custom json for conversion"
+        required: true
+        schema:
+          $ref: "#/definitions/Patient"
+      responses:
+        "200":
+          description: "Transformed to FHIR"
+
+  /generateR4ImagingStudy/:
+    post:
+      tags:
+      - "generateR4ImagingStudy"
+      summary: "Convert custom json to standard ImagingStudy resource"
+      description: ""
+      operationId: "placeOrder"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "order placed for purchasing the pet"
+        required: true
+        schema:
+          $ref: "#/definitions/Imaging_study"
+      responses:
+        "200":
+          description: "Transformed to FHIR"
+definitions:
+  Patient:
+    type: "object"
+    properties:
+      uuid:
+        type: "string"
+        default: 6f066bf8-9869-11eb-ac81-086b914b0efb
+      projectid:
+        type: "string"
+        default: 48
+      patientscomments:
+        type: "string"
+        default: test comments
+      creatorid:
+        type: "string"
+        default: 12
+      timestamp:
+        type: "string"
+        default: "2021-04-08 12:53:36"
+      patientssex:
+        type: "string"
+        default: male
+      patientsbirthtime:
+        type: "string"
+        default: null
+      patientsbirthdate:
+        type: "string"
+        default: "1993-01-01"
+      patientsname:
+        type: "string"
+        default: "TEST PATIENT"
+      patientid:
+        type: "string" 
+        default: 1010101
+      id:
+        type: "string" 
+        default: 110143
+    example:
+      [{
+  "uuid": "6f066bf8-9869-11eb-ac81-086b914b0efb",
+  "projectid": "48",
+  "patientscomments": "test comments",
+  "creatorid": "12",
+  "timestamp": "2021-04-08 12:53:36",
+  "patientssex": "m",
+  "patientsbirthtime": null,
+  "patientsbirthdate": "1993-01-01",
+  "patientsname": "TEST PATIENT",
+  "patientid": "1010101",
+  "id": "110143"
+}]
+    xml:
+      name: "Order"  
+  Imaging_study:
+    type: "object"
+    properties:
+      request:
+        type: "string"
+        default: [{
+  "creatorid": 12,
+  "timestamp": "2021-04-08 12:53:36",
+  "studydate": null,
+  "studydescription": "RAD mr hersen 26,[9-7-5-129]",
+  "uuid": "6f08691c-9869-11eb-ac81-086b914b0efb",
+  "studydatetime": "2015-08-06 09:04:47",
+  "studyinstanceuid": "1.2.124.113532.80.22201.13880.20150804.171337.1085891221",
+  "accessionnumber": null,
+  "id": 821,
+  "archived": 0,
+  "scan_id": 0,
+  "patient_id": 91,
+  "studytime": null,
+  "studyid": null,
+  "patient_uuid": "6f066bf8-9869-11eb-ac81-086b914b0efb",
+  "series": [{
+    "modality": "MR",
+    "manufacturersmodelname": "Achieva",
+    "studyid": 821,
+    "seriesdatetime": "2015-08-06 09:31:44",
+    "seriesdescription": "T1W_SAG",
+    "id": 4049,
+    "archived": 0,
+    "seriestime": null,
+    "seriesdate": null,
+    "seriesnumber": "901",
+    "seriesinstanceuid": "2.16.840.1.114252.144536033021523445910914042678718037028",
+    "uuid": "6f0984d2-9869-11eb-ac81-086b914b0efb",
+    "timestamp": "2021-04-08 12:53:36",
+    "creatorid": 12,
+    "instance": [{
+      "uid": "2.16.840.1.114252.100506452094336038035089803997350483223",
+      "sopClass": {
+        "system": "urn:ietf:rfc:3986",
+        "code": "urn:oid:1.2.840.10008.5.1.4.1.1.4"
+      },
+      "number": 23,
+      "extension": [{
+        "url": "https://citiustech/imagingstudy/instance_extension/instance_local_id",
+        "valueString": 23282
+      }, {
+        "url": "https://citiustech/imagingstudy/instance_extension/instance_type",
+        "valueString": "ORIGINAL\\PRIMARY\\M_FFE\\M\\FFE"
+      }, {
+        "url": "https://citiustech/imagingstudy/instance_extension/instance_filetype",
+        "valueString": "dcm"
+      }, {
+        "url": "https://citiustech/imagingstudy/instance_extension/instance_creatoryid",
+        "valueString": 12
+      }, {
+        "url": "https://citiustech/imagingstudy/instance_extension/instance_rows",
+        "valueString": 512
+      }, {
+        "url": "https://citiustech/imagingstudy/instance_extension/instance_columns",
+        "valueString": 512
+      }, {
+        "url": "https://citiustech/imagingstudy/instance_extension/instance_seriesid",
+        "valueString": 4049
+      }, {
+        "url": "https://citiustech/imagingstudy/instance_extension/instance_imageid",
+        "valueString": "NA"
+      }, {
+        "url": "https://citiustech/imagingstudy/instance_extension/instance_checksum",
+        "valueString": "NA"
+      }, {
+        "url": "https://citiustech/imagingstudy/instance_extension/instance_contentdatetime",
+        "valueDateTime": "2015-08-06T09:31:53Z"
+      }]
+    }]
+  }]
+}]
+    example: 
+      [{
+  "creatorid": 12,
+  "timestamp": "2021-04-08 12:53:36",
+  "studydate": null,
+  "studydescription": "RAD mr hersen 26,[9-7-5-129]",
+  "uuid": "6f08691c-9869-11eb-ac81-086b914b0efb",
+  "studydatetime": "2015-08-06 09:04:47",
+  "studyinstanceuid": "1.2.124.113532.80.22201.13880.20150804.171337.1085891221",
+  "accessionnumber": null,
+  "id": 821,
+  "archived": 0,
+  "scan_id": 0,
+  "patient_id": 91,
+  "studytime": null,
+  "studyid": null,
+  "patient_uuid": "6f066bf8-9869-11eb-ac81-086b914b0efb",
+  "series": [{
+    "modality": "MR",
+    "manufacturersmodelname": "Achieva",
+    "studyid": 821,
+    "seriesdatetime": "2015-08-06 09:31:44",
+    "seriesdescription": "T1W_SAG",
+    "id": 4049,
+    "archived": 0,
+    "seriestime": null,
+    "seriesdate": null,
+    "seriesnumber": "901",
+    "seriesinstanceuid": "2.16.840.1.114252.144536033021523445910914042678718037028",
+    "uuid": "6f0984d2-9869-11eb-ac81-086b914b0efb",
+    "timestamp": "2021-04-08 12:53:36",
+    "creatorid": 12,
+    "instance": [{
+      "uid": "2.16.840.1.114252.100506452094336038035089803997350483223",
+      "sopClass": {
+        "system": "urn:ietf:rfc:3986",
+        "code": "urn:oid:1.2.840.10008.5.1.4.1.1.4"
+      },
+      "number": 23,
+      "extension": [{
+        "url": "https://citiustech/imagingstudy/instance_extension/instance_local_id",
+        "valueString": 23282
+      }, {
+        "url": "https://citiustech/imagingstudy/instance_extension/instance_type",
+        "valueString": "ORIGINAL\\PRIMARY\\M_FFE\\M\\FFE"
+      }, {
+        "url": "https://citiustech/imagingstudy/instance_extension/instance_filetype",
+        "valueString": "dcm"
+      }, {
+        "url": "https://citiustech/imagingstudy/instance_extension/instance_creatoryid",
+        "valueString": 12
+      }, {
+        "url": "https://citiustech/imagingstudy/instance_extension/instance_rows",
+        "valueString": 512
+      }, {
+        "url": "https://citiustech/imagingstudy/instance_extension/instance_columns",
+        "valueString": 512
+      }, {
+        "url": "https://citiustech/imagingstudy/instance_extension/instance_seriesid",
+        "valueString": 4049
+      }, {
+        "url": "https://citiustech/imagingstudy/instance_extension/instance_imageid",
+        "valueString": "NA"
+      }, {
+        "url": "https://citiustech/imagingstudy/instance_extension/instance_checksum",
+        "valueString": "NA"
+      }, {
+        "url": "https://citiustech/imagingstudy/instance_extension/instance_contentdatetime",
+        "valueDateTime": "2015-08-06T09:31:53Z"
+      }]
+    }]
+  }]
+}]
+    xml:
+      name: "Order"
+externalDocs:
+  description: "Find out more about Swagger"
+  url: "http://swagger.io"
