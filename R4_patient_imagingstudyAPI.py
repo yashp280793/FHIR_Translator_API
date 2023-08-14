@@ -41,9 +41,9 @@ def generator_r4patient():
                           + (patient['patientsbirthdate'
                           ])[6:8] if patient.get('patientsbirthdate',
                           None) else ''),
-            'extension': [{'url': 'https://citiustech/imagingstudy/patient_extension/patient_creatorid'
+            'extension': [{'url': 'https://test/imagingstudy/patient_extension/patient_creatorid'
                           , 'valueString': str(patient['creatorid'])},
-                          {'url': 'https://citiustech/imagingstudy/patient_extension/patient_projectid'
+                          {'url': 'https://test/imagingstudy/patient_extension/patient_projectid'
                           , 'valueString': str(patient['projectid'])}],
             }
 
@@ -76,19 +76,19 @@ def generator_r4imagingstudy():
                                                                        11:19] + "Z" if series_data.get("seriesdatetime",
                                                                                                        None) else "",
                 "extension": [{
-                    "url": "https://citiustech/imagingstudy/series_extension/seriesid",
+                    "url": "https://test/imagingstudy/series_extension/seriesid",
                     "valueString": str(series_data["id"])
                 },
                     {
-                        "url": "https://citiustech/imagingstudy/series_extension/studyid",
+                        "url": "https://test/imagingstudy/series_extension/studyid",
                         "valueString": str(series_data["studyid"])
                     },
                     {
-                        "url": "https://citiustech/imagingstudy/series_extension/manufacturersmodelname",
+                        "url": "https://test/imagingstudy/series_extension/manufacturersmodelname",
                         "valueString": str(series_data["manufacturersmodelname"])
                     },
                     {
-                        "url": "https://citiustech/imagingstudy/series_extension/archived",
+                        "url": "https://test/imagingstudy/series_extension/archived",
                         "valueString": str(series_data["archived"])
                     }
 
@@ -143,15 +143,15 @@ def generator_r4imagingstudy():
             "series": series,
             "extension": [
                 {
-                    "url": "https://citiustech/imagingstudy/study_extension/studyid",
+                    "url": "https://test/imagingstudy/study_extension/studyid",
                     "valueString": str(study["studyid"]) if study.get("studyid", None) else "NA"
                 },
                 {
-                    "url": "https://citiustech/imagingstudy/study_extension/creatorid",
+                    "url": "https://test/imagingstudy/study_extension/creatorid",
                     "valueString": str(study["creatorid"])
                 },
                 {
-                    "url": "https://citiustech/imagingstudy/study_extension/scan_id",
+                    "url": "https://test/imagingstudy/study_extension/scan_id",
                     "valueString": str(study["scan_id"])
                 }
             ]
