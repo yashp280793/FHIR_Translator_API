@@ -3,7 +3,7 @@ uvicorn==0.30.1
 python-multipart==0.0.9
 sqlalchemy==1.4.48
 Jinja2==3.1.4
-python-jose==3.3.0
+pyjwt
 aiofiles==24.1.0
 passlib[bcrypt]==1.7.4
 psycopg2-binary==2.9.9
@@ -15,7 +15,7 @@ python-dotenv==1.0.1
 databases[postgresql]==0.8.0
 python-dateutil==2.9.0.post0
 anyio==4.4.0
-pytest-asyncio==0.23.7
+pytest-asyncio==0.23.7f
 pytest-tornasync==0.6.0.post2
 pytest-trio==0.8.0
 pytest-twisted==1.14.1
