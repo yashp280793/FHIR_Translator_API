@@ -20,7 +20,7 @@ pytest-tornasync==0.6.0.post2
 pytest-trio==0.8.0
 pytest-twisted==1.14.1
 pandas==2.2.2
-Pillow==10.0.1
+Pillow==10.3.0
 qrcode==7.4.2
 boto3==1.34.137
 packaging==24.1
